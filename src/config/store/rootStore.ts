@@ -1,0 +1,66 @@
+import { applyMiddleware, createStore, Middleware, Store } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { ActionsObservable, combineEpics, createEpicMiddleware, Epic, StateObservable } from 'redux-observable'
+import { BehaviorSubject, Subject } from 'rxjs'
+import { mergeMap } from 'rxjs/operators'
+import { EpicsDependencies } from './rootEpicMiddleware'
+import { AppActionsType, RootReducer } from './rootReducer'
+import { AppState } from './rootState'
+
+const reduxImmutableState = require('redux-immutable-state-invariant').default()
+
+interface ReduxObservableParameters {
+  epics: Array<Epic<AppActionsType, AppActionsType>>
+  dependencies: EpicsDependencies
+}
+
+interface MiddlewareParameters {
+  reduxObservable: ReduxObservableParameters
+}
+
+export class ReduxStore {
+
+  private _epic$: Subject<Epic<AppActionsType, AppActionsType>> = new BehaviorSubject(combineEpics())
+
+  configure(middlewareParameters: MiddlewareParameters,
+            additionalMiddlewares: Middleware[] = []): Store<AppState> {
+    const middlewares = (process.env.NODE_ENV === 'development')
+      ? [...additionalMiddlewares, reduxImmutableState]
+      : [...additionalMiddlewares]
+
+    const reduxObservableMiddleware = createEpicMiddleware(middlewareParameters.reduxObservable.dependencies)
+
+    const store = createStore<AppState, AppActionsType, any, any>(
+      RootReducer,
+      composeWithDevTools(
+        applyMiddleware(
+          reduxObservableMiddleware,
+          ...middlewares
+        )
+      )
+    )
+
+    this.runReduxObservable(reduxObservableMiddleware)
+
+    for (const epic of middlewareParameters.reduxObservable.epics)
+      this.addEpic(epic)
+
+    return store
+  }
+
+  private runReduxObservable(reduxObservableMiddleware) {
+    const rootEpic: any = (action$: ActionsObservable<AppActionsType>,
+                           state$: StateObservable<AppState>,
+                           dependencies: EpicsDependencies) =>
+      this._epic$
+        .pipe(
+          mergeMap(epic => epic(action$, state$, dependencies))
+        )
+    reduxObservableMiddleware.run(rootEpic)
+  }
+
+  private addEpic(epic: Epic<AppActionsType, AppActionsType>): void {
+    this._epic$.next(epic)
+  }
+
+}

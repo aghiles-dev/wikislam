@@ -4,22 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot",
-    "build": "webpack"
+    "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aghiles-dev/react-todolist.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "redux": "4.0.1",
+    "redux-observable": "1.1.0",
+    "rxjs": "6.4.0",
+    "rxjs-compat": "6.4.0"
+  },
   "devDependencies": {
-    "ts-loader": "5.4.5",
-    "tslint": "5.16.0",
-    "tslint-config-standard": "8.0.1",
-    "tslint-loader": "3.6.0",
-    "typescript": "3.4.5"
+    "@babel/core": "7.4.3",
+    "@types/jest": "24.0.11",
+    "@types/node": "11.13.2",
+    "babel-jest": "24.7.1",
+    "jest": "24.7.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-immutable-state-invariant": "^2.1.0",
+    "ts-jest": "24.0.2",
+    "ts-node": "8.0.3",
+    "typescript": "3.4.2"
   }
 }
