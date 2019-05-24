@@ -14,7 +14,7 @@ module.exports = {
     "^.+\\.ts$": "ts-jest"
   },
   "testMatch": [
-    "<rootDir>/tests/**/?(*.)+(spec|test).ts?(x)"
+    "**/tests/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"
   ],
   "transformIgnorePatterns": [
     "node_modules/(?!(date-fns)/)"

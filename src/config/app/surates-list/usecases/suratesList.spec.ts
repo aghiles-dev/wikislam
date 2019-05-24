@@ -1,0 +1,75 @@
+import { AppActionsType } from '../../../store/rootReducer'
+import { AppState } from '../../../store/rootState'
+import { Store } from 'redux'
+import { createFakeStore, fakeEpicsDependencies } from '../../../../../tests/test-helper'
+import { getAllSurates, isSuratesListBeingFetched } from '../../../store/rootSelectors'
+import { SuratesListRepository } from '../domain/ports/SuratesListRepository'
+import { of } from 'rxjs'
+import { suratesListActions } from './suratesList.actions'
+
+describe('Surates', () => {
+  let store: Store<AppState, AppActionsType>
+  let suratesListRepository: SuratesListRepository
+
+  beforeEach(() => {
+    store = createFakeStore(fakeEpicsDependencies)
+    suratesListRepository = fakeEpicsDependencies.dependencies.surateRepository
+  })
+
+  describe('fetch all surates', () => {
+    describe('By default', () => {
+      it('the surates are empty', () => {
+        // Then
+        expect(getAllSurates(store.getState())).toEqual([])
+        expect(isSuratesListBeingFetched(store.getState())).toEqual(false)
+      })
+    })
+
+    describe('While fetching', () => {
+      it('informs that the surates are being fetched', () => {
+        // When
+        store.dispatch(suratesListActions.fetchSuratesList())
+
+        // Then
+        expect(isSuratesListBeingFetched(store.getState())).toEqual(true)
+      })
+    })
+
+    describe('When the surateRepository succeeds in fetching', () => {
+      it('saves the fetched surates', async () => {
+        // Given
+        spyOn(suratesListRepository, 'fetchAllSurates').and.returnValue(of([{
+          id: 1,
+          surateNumber: 1,
+          beginsWithBismillah: false,
+          revelationOrder: 5,
+          revelationPlace: "makkah",
+          name: "Al-Fatihah",
+          arabicName: "الفاتحة",
+          frenchName: 'L\'ouverture',
+          numberOfVerses: 7
+        }]))
+
+        // When
+        await store.dispatch(suratesListActions.fetchSuratesList())
+
+        // Then
+        expect(suratesListRepository.fetchAllSurates).toHaveBeenCalledTimes(1)
+        expect(getAllSurates(store.getState())).toEqual([
+          {
+            id: 1,
+            surateNumber: 1,
+            beginsWithBismillah: false,
+            revelationOrder: 5,
+            revelationPlace: "makkah",
+            name: "Al-Fatihah",
+            arabicName: "الفاتحة",
+            frenchName: 'L\'ouverture',
+            numberOfVerses: 7
+          }
+        ])
+        expect(isSuratesListBeingFetched(store.getState())).toEqual(false)
+      })
+    })
+  })
+})

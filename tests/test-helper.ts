@@ -3,11 +3,15 @@ import { ReduxStore } from '../src/config/store/rootStore'
 import { AppState } from '../src/config/store/rootState'
 import { Store } from 'redux'
 
-export const FakeEpicsDependencies: EpicsDependencies = {
-  dependencies: {}
+export const fakeEpicsDependencies: EpicsDependencies = {
+  dependencies: {
+    surateRepository: {
+      fetchAllSurates: jest.fn()
+    }
+  }
 }
 
-export function createFakeStore(epicsDependencies: EpicsDependencies = FakeEpicsDependencies): Store<AppState> {
+export function createFakeStore(epicsDependencies: EpicsDependencies = fakeEpicsDependencies): Store<AppState> {
   const promisify = store => next => action => {
     return new Promise(resolve => {
       const result = next(action)
