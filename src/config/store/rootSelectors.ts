@@ -1,10 +1,10 @@
 import { AppState } from './rootState'
-import { SurateState } from '../app/surate/domain/SurateState'
+import { SurateState } from '../../app/surate/domain/SurateState'
 import {
   _getAllSurates,
   _isSuratesListBeingFetched,
   _isSuratesListFetchingInError
-} from '../app/surates-list/usecases/suratesList.reducers'
+} from '../../app/surates-list/usecases/suratesList.reducers'
 
 export function getAllSurates(state: AppState): SurateState[] {
   return _getAllSurates(state.suratesList)

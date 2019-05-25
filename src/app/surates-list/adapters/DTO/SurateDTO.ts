@@ -1,6 +1,6 @@
-import { RevelationPlace } from './SurateState'
+import { RevelationPlace } from '../../../surate/domain/SurateState'
 
-export interface SurateRawState {
+export interface SurateDTO {
   id: number
   chapter_number: number
   bismillah_pre: boolean

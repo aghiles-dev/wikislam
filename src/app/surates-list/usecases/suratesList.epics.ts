@@ -1,7 +1,7 @@
 import { ActionsObservable, combineEpics, ofType, StateObservable } from 'redux-observable'
 import { Observable, of } from 'rxjs'
 import { catchError, map, switchMap, tap } from 'rxjs/operators'
-import { AppState } from '../../../store/rootState'
+import { AppState } from '../../../config/store/rootState'
 import { FETCH_SURATES_LIST, suratesListActions, suratesListActionTypes } from './suratesList.actions'
 import { SuratesListRepository } from '../domain/ports/SuratesListRepository'
 

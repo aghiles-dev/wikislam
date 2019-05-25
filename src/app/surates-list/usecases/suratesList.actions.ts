@@ -1,5 +1,5 @@
-import { createAction } from '../../../store/helpers/createAction'
-import { ActionsUnion } from '../../../store/helpers/actionsUnion'
+import { createAction } from '../../../config/store/helpers/createAction'
+import { ActionsUnion } from '../../../config/store/helpers/actionsUnion'
 import { SurateState } from '../../surate/domain/SurateState'
 
 export const FETCH_SURATES_LIST = 'FETCH_SURATES_LIST'
