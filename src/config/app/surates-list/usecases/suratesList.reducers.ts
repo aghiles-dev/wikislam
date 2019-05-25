@@ -23,7 +23,8 @@ function handleSuratesList(state: SuratesListState = initialSuratesListState,
     case SURATES_LIST_FETCHED:
       return {
         ...state,
-        surates: action.payload
+        surates: action.payload,
+        isLoading: false
       }
     case SURATES_LIST_ERROR_IN_FETCHING:
       return {

@@ -5,7 +5,7 @@ import { Store } from 'redux'
 
 export const fakeEpicsDependencies: EpicsDependencies = {
   dependencies: {
-    surateRepository: {
+    suratesListRepository: {
       fetchAllSurates: jest.fn()
     }
   }

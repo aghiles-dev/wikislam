@@ -13,7 +13,7 @@ describe('Surates', () => {
 
   beforeEach(() => {
     store = createFakeStore(fakeEpicsDependencies)
-    suratesListRepository = fakeEpicsDependencies.dependencies.surateRepository
+    suratesListRepository = fakeEpicsDependencies.dependencies.suratesListRepository
   })
 
   describe('fetch all surates', () => {
@@ -35,7 +35,7 @@ describe('Surates', () => {
       })
     })
 
-    describe('When the surateRepository succeeds in fetching', () => {
+    describe('When the suratesListRepository succeeds in fetching', () => {
       it('saves the fetched surates', async () => {
         // Given
         spyOn(suratesListRepository, 'fetchAllSurates').and.returnValue(of([{
@@ -69,6 +69,7 @@ describe('Surates', () => {
           }
         ])
         expect(isSuratesListBeingFetched(store.getState())).toEqual(false)
+
       })
     })
   })

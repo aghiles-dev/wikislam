@@ -24,20 +24,11 @@ export class ReduxStore {
 
   configure(middlewareParameters: MiddlewareParameters,
             additionalMiddlewares: Middleware[] = []): Store<AppState> {
-    const middlewares = (process.env.NODE_ENV === 'development')
-      ? [...additionalMiddlewares, reduxImmutableState]
-      : [...additionalMiddlewares]
-
     const reduxObservableMiddleware = createEpicMiddleware(middlewareParameters.reduxObservable.dependencies)
 
     const store = createStore<AppState, AppActionsType, any, any>(
       RootReducer,
-      composeWithDevTools(
-        applyMiddleware(
-          reduxObservableMiddleware,
-          ...middlewares
-        )
-      )
+      this.createStoreEnhancer(reduxObservableMiddleware, additionalMiddlewares)
     )
 
     this.runReduxObservable(reduxObservableMiddleware)
@@ -46,6 +37,13 @@ export class ReduxStore {
       this.addEpic(epic)
 
     return store
+  }
+
+  private createStoreEnhancer(reduxObservableMiddleware, additionalMiddlewares: Middleware[]) {
+    const middlewares = [...additionalMiddlewares, reduxObservableMiddleware]
+    return process.env.APP_DEBUG === 'true'
+      ? composeWithDevTools(applyMiddleware(...middlewares, reduxImmutableState))
+      : applyMiddleware(...middlewares)
   }
 
   private runReduxObservable(reduxObservableMiddleware) {

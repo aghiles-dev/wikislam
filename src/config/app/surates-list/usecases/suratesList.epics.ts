@@ -13,17 +13,8 @@ function fetchAuthenticatedUserEpic(action$: ActionsObservable<suratesListAction
   return action$.pipe(
     ofType(FETCH_SURATES_LIST),
     switchMap(() => suratesListRepository.fetchAllSurates().pipe(
-      tap(() => {
-        console.log('in')
-      }),
-      map(suratesList => {
-        console.log(suratesList)
-        return suratesListActions.suratesListFetched(suratesList)
-      }),
-      catchError(() => {
-        console.log('error')
-        return of(suratesListActions.suratesListErrorInFetching())
-      })
+      map(suratesList => suratesListActions.suratesListFetched(suratesList)),
+      catchError(() => of(suratesListActions.suratesListErrorInFetching()))
     ))
   )
 }

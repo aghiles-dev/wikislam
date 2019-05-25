@@ -6,7 +6,7 @@ import { suratesListEpics } from '../app/surates-list/usecases/suratesList.epics
 
 export interface EpicsDependencies {
   dependencies: {
-    surateRepository: SuratesListRepository
+    suratesListRepository: SuratesListRepository
   }
 }
 
@@ -16,7 +16,7 @@ export const appEpics: Array<Epic<any, any>> = [
 
 export const appEpicsDependencies: EpicsDependencies = {
   dependencies: {
-    surateRepository: {
+    suratesListRepository: {
       fetchAllSurates(): Observable<SurateState[]> {
         return of([])
       }
