@@ -9,7 +9,8 @@ import { SurateState } from '../../surate/domain/SurateState'
 
 const initialSuratesListState: SuratesListState = {
   surates: [],
-  isLoading: false
+  isLoading: false,
+  isError: false
 }
 
 function handleSuratesList(state: SuratesListState = initialSuratesListState,
@@ -28,7 +29,9 @@ function handleSuratesList(state: SuratesListState = initialSuratesListState,
       }
     case SURATES_LIST_ERROR_IN_FETCHING:
       return {
-        ...state
+        ...state,
+        isLoading: false,
+        isError: true
       }
     default:
       return state
@@ -43,4 +46,8 @@ export function _getAllSurates(surateList: SuratesListState): SurateState[] {
 
 export function _isSuratesListBeingFetched(surateList: SuratesListState): Boolean {
   return surateList.isLoading
+}
+
+export function _isSuratesListFetchingInError(surateList: SuratesListState): Boolean {
+  return surateList.isError
 }

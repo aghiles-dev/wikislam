@@ -2,9 +2,9 @@ import { AppActionsType } from '../../../store/rootReducer'
 import { AppState } from '../../../store/rootState'
 import { Store } from 'redux'
 import { createFakeStore, fakeEpicsDependencies } from '../../../../../tests/test-helper'
-import { getAllSurates, isSuratesListBeingFetched } from '../../../store/rootSelectors'
+import { getAllSurates, isSuratesListBeingFetched, isSuratesListFetchingInError } from '../../../store/rootSelectors'
 import { SuratesListRepository } from '../domain/ports/SuratesListRepository'
-import { of } from 'rxjs'
+import { of, throwError } from 'rxjs'
 import { suratesListActions } from './suratesList.actions'
 
 describe('Surates', () => {
@@ -22,6 +22,7 @@ describe('Surates', () => {
         // Then
         expect(getAllSurates(store.getState())).toEqual([])
         expect(isSuratesListBeingFetched(store.getState())).toEqual(false)
+        expect(isSuratesListFetchingInError(store.getState())).toEqual(false)
       })
     })
 
@@ -70,6 +71,20 @@ describe('Surates', () => {
         ])
         expect(isSuratesListBeingFetched(store.getState())).toEqual(false)
 
+      })
+    })
+
+    describe('When the suratesListRepository succeeds in fetching', () => {
+      it('saves the fetched surates', async () => {
+        // Given
+        spyOn(suratesListRepository, 'fetchAllSurates').and.returnValue(throwError(''))
+
+        // When
+        await store.dispatch(suratesListActions.fetchSuratesList())
+
+        // Then
+        expect(isSuratesListBeingFetched(store.getState())).toEqual(false)
+        expect(isSuratesListFetchingInError(store.getState())).toEqual(true)
       })
     })
   })
