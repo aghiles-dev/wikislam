@@ -26,7 +26,7 @@ export class SuratesBuilder {
   }
 
   withId(id: number) {
-    this.surate.id
+    this.surate.id = id
     return this
   }
 
