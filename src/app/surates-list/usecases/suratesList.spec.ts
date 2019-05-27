@@ -1,7 +1,7 @@
 import { AppActionsType } from '../../../config/store/rootReducer'
 import { AppState } from '../../../config/store/rootState'
 import { Store } from 'redux'
-import { createFakeStore, fakeEpicsDependencies } from '../../../../tests/test-helper'
+import { createFakeStore, fakeEpicsDependencies } from '../../../test-helper'
 import { getAllSurates, isSuratesListBeingFetched, isSuratesListFetchingInError } from '../../../config/store/rootSelectors'
 import { SuratesListRepository } from '../domain/ports/SuratesListRepository'
 import { of, throwError } from 'rxjs'

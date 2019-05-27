@@ -1,6 +1,6 @@
-import { appEpics, EpicsDependencies } from '../src/config/store/rootEpicMiddleware'
-import { ReduxStore } from '../src/config/store/rootStore'
-import { AppState } from '../src/config/store/rootState'
+import { appEpics, EpicsDependencies } from './config/store/rootEpicMiddleware'
+import { ReduxStore } from './config/store/rootStore'
+import { AppState } from './config/store/rootState'
 import { Store } from 'redux'
 
 export const fakeEpicsDependencies: EpicsDependencies = {
