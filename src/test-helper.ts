@@ -2,11 +2,16 @@ import { appEpics, EpicsDependencies } from './config/store/rootEpicMiddleware'
 import { ReduxStore } from './config/store/rootStore'
 import { AppState } from './config/store/rootState'
 import { Store } from 'redux'
+import { Observable, of } from 'rxjs'
+import { SurateContentState } from './app/surate/domain/SurateContentState'
 
 export const fakeEpicsDependencies: EpicsDependencies = {
   dependencies: {
     suratesListRepository: {
       fetchAllSurates: jest.fn()
+    },
+    surateRepository: {
+      fetchById: jest.fn()
     }
   }
 }

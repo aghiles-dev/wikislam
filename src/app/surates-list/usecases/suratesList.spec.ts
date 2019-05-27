@@ -74,8 +74,8 @@ describe('Surates', () => {
       })
     })
 
-    describe('When the suratesListRepository succeeds in fetching', () => {
-      it('saves the fetched surates', async () => {
+    describe('When the suratesListRepository fails in fetching', () => {
+      it('informs of the error', async () => {
         // Given
         spyOn(suratesListRepository, 'fetchAllSurates').and.returnValue(throwError(''))
 
