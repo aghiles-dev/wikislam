@@ -9,22 +9,24 @@ describe('Surates list Repository', () => {
 
   beforeEach(() => {
     httpClient = {
-      fetch: jest.fn().mockReturnValue(of([
-        {
-          id: 1,
-          chapter_number: 1,
-          bismillah_pre: false,
-          revelation_order: 5,
-          revelation_place: "makkah",
-          name_arabic: "الفاتحة",
-          name_simple: "Al-Fatihah",
-          verses_count: 7,
-          translated_name: {
-            language_name: "french",
-            name: "L'ouverture"
+      fetch: jest.fn().mockReturnValue(of({
+        chapters: [
+          {
+            id: 1,
+            chapter_number: 1,
+            bismillah_pre: false,
+            revelation_order: 5,
+            revelation_place: "makkah",
+            name_arabic: "الفاتحة",
+            name_simple: "Al-Fatihah",
+            verses_count: 7,
+            translated_name: {
+              language_name: "french",
+              name: "L'ouverture"
+            }
           }
-        }
-      ]))
+        ]
+      }))
     }
 
     suratesListRepository = new RxjsSuratesListRepository(httpClient)

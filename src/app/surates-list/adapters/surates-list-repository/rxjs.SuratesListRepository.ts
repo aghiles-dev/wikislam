@@ -10,8 +10,8 @@ export class RxjsSuratesListRepository implements SuratesListRepository{
   constructor(private httpClient: HttpClient) {}
 
   fetchAllSurates(): Observable<SurateState[]> {
-    return this.httpClient.fetch<SurateDTO[]>('chapters?language=fr').pipe(
-      map(this.mapSuratesListDtoToSuratesList)
+    return this.httpClient.fetch<{chapters: SurateDTO[]}>('chapters?language=fr').pipe(
+      map(response => this.mapSuratesListDtoToSuratesList(response.chapters))
     )
   }
 
