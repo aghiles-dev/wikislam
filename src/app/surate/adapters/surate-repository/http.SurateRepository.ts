@@ -10,7 +10,7 @@ import { map, mergeMap, tap } from 'rxjs/operators'
 
 export class HttpSurateRepository implements SurateRepository {
   private CHAPTER_ID_PLACEHOLDER = '{chapterId}'
-  private  versesLimit = this.envHandler.get(EnvKey.VERSES_LIMIT)
+  private versesLimit = this.envHandler.get(EnvKey.VERSES_LIMIT)
   private BASE_URL = `/chapters/${this.CHAPTER_ID_PLACEHOLDER}/verses?translations=31&language=fr&text_type=words&limit=${this.versesLimit}`
 
   constructor(private httpClient: HttpClient,
@@ -34,11 +34,11 @@ export class HttpSurateRepository implements SurateRepository {
             return this.httpClient.fetch<SurateContentDTO>(`${url}&page=${index + 1}`)
           })
         ).pipe(
-          map(result => {
-            let verses: Verse[] = []
-            result.map((surateContentDTO: SurateContentDTO) => {
-              verses = verses.concat(surateContentDTO.verses.map(this.mapVerseDtoToVerse))
-            })
+          map(surateContentDTOList => {
+            const verses = surateContentDTOList
+              .map(surateContentDTO => surateContentDTO.verses.map(this.mapVerseDtoToVerse))
+              .reduce((accumulator, verses) => accumulator.concat(verses), [])
+
             this.cacheHandler.set<Verse[]>(url, verses)
             return verses
           })
