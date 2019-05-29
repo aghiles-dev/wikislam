@@ -6,6 +6,8 @@ export class NodeEnvHandler implements EnvHandler {
     switch (key) {
       case EnvKey.API_URL:
         return this.getOrElse(process.env.API_URL)
+      case EnvKey.VERSES_LIMIT:
+        return this.getOrElse(process.env.VERSES_LIMIT)
       default:
         return ''
     }

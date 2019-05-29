@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs'
-import { SurateContentState } from '../SurateContentState'
+import { Verse } from '../Verse'
 
 export interface SurateRepository {
-  fetchById(id: number): Observable<SurateContentState>
+  fetchById(id: number): Observable<Verse[]>
 }

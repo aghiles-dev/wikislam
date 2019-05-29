@@ -5,7 +5,7 @@ import { SuratesBuilder, SurateState } from '../../../surate/domain/SurateState'
 import { SurateDTO } from '../DTO/SurateDTO'
 import { map } from 'rxjs/operators'
 
-export class RxjsSuratesListRepository implements SuratesListRepository{
+export class HttpSuratesListRepository implements SuratesListRepository{
 
   constructor(private httpClient: HttpClient) {}
 

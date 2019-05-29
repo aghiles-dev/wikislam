@@ -1,6 +1,6 @@
 import { SuratesListRepository } from '../../domain/ports/SuratesListRepository'
 import { HttpClient } from '../../../shared/domain/ports/HttpClient'
-import { RxjsSuratesListRepository } from './rxjs.SuratesListRepository'
+import { HttpSuratesListRepository } from './http.SuratesListRepository'
 import { of } from 'rxjs'
 
 describe('Surates list Repository', () => {
@@ -29,7 +29,7 @@ describe('Surates list Repository', () => {
       }))
     }
 
-    suratesListRepository = new RxjsSuratesListRepository(httpClient)
+    suratesListRepository = new HttpSuratesListRepository(httpClient)
   })
 
   describe('fetch all surates', () => {
