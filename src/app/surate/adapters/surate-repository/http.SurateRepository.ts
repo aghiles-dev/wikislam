@@ -6,11 +6,12 @@ import { CacheHandler } from '../../domain/ports/CacheHandler'
 import { Verse, VerseBuilder } from '../../domain/Verse'
 import { SurateContentDTO } from '../DTO/SurateContentDTO'
 import { VerseDTO } from '../DTO/VerseDTO'
-import { map, mergeMap } from 'rxjs/operators'
+import { map, mergeMap, tap } from 'rxjs/operators'
 
 export class HttpSurateRepository implements SurateRepository {
   private CHAPTER_ID_PLACEHOLDER = '{chapterId}'
-  private BASE_URL = `/chapters/${this.CHAPTER_ID_PLACEHOLDER}/verses?translations=31&language=fr&text_type=words&limit=${this.envHandler.get(EnvKey.VERSES_LIMIT)}`
+  private  versesLimit = this.envHandler.get(EnvKey.VERSES_LIMIT)
+  private BASE_URL = `/chapters/${this.CHAPTER_ID_PLACEHOLDER}/verses?translations=31&language=fr&text_type=words&limit=${this.versesLimit}`
 
   constructor(private httpClient: HttpClient,
               private envHandler: EnvHandler,
@@ -27,14 +28,13 @@ export class HttpSurateRepository implements SurateRepository {
 
     return this.httpClient.fetch<SurateContentDTO>(url).pipe(
       mergeMap((surateContentDTO: SurateContentDTO) => {
-        const emptyArrayOfTotalPagesElements = new Array(surateContentDTO.meta.total_pages)
+        const emptyArrayOfTotalPagesElements = Array(surateContentDTO.meta.total_pages).fill(null)
         return forkJoin(
           emptyArrayOfTotalPagesElements.map((_, index) => {
             return this.httpClient.fetch<SurateContentDTO>(`${url}&page=${index + 1}`)
           })
         ).pipe(
           map(result => {
-            console.log(result)
             let verses: Verse[] = []
             result.map((surateContentDTO: SurateContentDTO) => {
               verses = verses.concat(surateContentDTO.verses.map(this.mapVerseDtoToVerse))

@@ -63,33 +63,9 @@ describe('Surate Repository', () => {
       it('returns all the verses', async done => {
         // Given
         const chapterId = 1
-        const baseUrl = `/chapters/${chapterId}/verses?translations=31&language=fr&text_type=words&limit=5`
-        const expectedVerses = [
-          {
-            id: 1,
-            verseNumber: 1,
-            chapterId,
-            verseKey: '1:1',
-            arabicText: 'fake arabic text',
-            frenchText: 'fake french text',
-            juzNumber: 1,
-            hizbNumber: 1,
-            sajdah: false
-          },
-          {
-            id: 1,
-            verseNumber: 2,
-            chapterId,
-            verseKey: '1:2',
-            arabicText: 'fake arabic text 2',
-            frenchText: 'fake french text 2',
-            juzNumber: 2,
-            hizbNumber: 2,
-            sajdah: true
-          }
-        ]
+        const baseUrl = `/chapters/${chapterId}/verses?translations=31&language=fr&text_type=words&limit=1`
+
         spyOn(cacheHandler, 'get').and.returnValue(undefined)
-        spyOn(envHandler, 'get').and.returnValue(5)
         httpClient.fetch = jest.fn()
           .mockReturnValueOnce(of({
             meta: {
@@ -134,6 +110,31 @@ describe('Surate Repository', () => {
               }
             ]
           }))
+
+        const expectedVerses = [
+          {
+            id: 1,
+            verseNumber: 1,
+            chapterId,
+            verseKey: '1:1',
+            arabicText: 'fake arabic text',
+            frenchText: 'fake french text',
+            juzNumber: 1,
+            hizbNumber: 1,
+            sajdah: false
+          },
+          {
+            id: 2,
+            verseNumber: 2,
+            chapterId,
+            verseKey: '1:2',
+            arabicText: 'fake arabic text 2',
+            frenchText: 'fake french text 2',
+            juzNumber: 2,
+            hizbNumber: 2,
+            sajdah: true
+          }
+        ]
 
         // When
         const result = await surateRepository.fetchById(chapterId)
