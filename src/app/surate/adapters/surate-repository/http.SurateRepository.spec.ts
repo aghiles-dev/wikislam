@@ -148,7 +148,6 @@ describe('Surate Repository', () => {
           expect(httpClient.fetch).toHaveBeenNthCalledWith(2, `${baseUrl}&page=1`)
           expect(httpClient.fetch).toHaveBeenNthCalledWith(3, `${baseUrl}&page=2`)
           expect(cacheHandler.set).toHaveBeenCalledWith(baseUrl, expectedVerses)
-          setTimeout(() => done(), 200)
           done()
         })
       })
