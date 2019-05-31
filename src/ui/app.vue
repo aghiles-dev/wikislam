@@ -1,7 +1,8 @@
 <template>
   <div>
+    <nav-bar/>
+
     <section>
-      hello
       <main class="content">
         <router-view/>
       </main>
@@ -12,8 +13,11 @@
 <script lang="ts">
   import Vue from 'vue'
   import { Component } from 'vue-property-decorator'
+  import NavBar from './nav-bar/navBar.vue';
 
-  @Component({})
+  @Component({
+    components: { NavBar }
+  })
   export default class App extends Vue {
 
   }
