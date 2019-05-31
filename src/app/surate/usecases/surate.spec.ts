@@ -44,21 +44,19 @@ describe('Surates', () => {
       it('saves the fetched surate', async () => {
         // Given
         const surateId = 1
-        spyOn(surateRepository, 'fetchById').and.returnValue(of({
-          verses: [
-            {
-              id: 1,
-              verse_number: 1,
-              chapter_id: 2,
-              verseKey: '2:1',
-              arabicText: 'fake arabic text',
-              frenchText: 'fake french text',
-              juzNumber: 1,
-              hizbNumber: 1,
-              sajdah: false
-            }
-          ]
-        }))
+        spyOn(surateRepository, 'fetchById').and.returnValue(of([
+          {
+            id: 1,
+            verse_number: 1,
+            chapter_id: 2,
+            verseKey: '2:1',
+            arabicText: 'fake arabic text',
+            frenchText: 'fake french text',
+            juzNumber: 1,
+            hizbNumber: 1,
+            sajdah: false
+          }
+        ]))
 
         // When
         await store.dispatch(surateActions.fetchSurateById(surateId))

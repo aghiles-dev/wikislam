@@ -17,7 +17,7 @@ function handleSurate(state: SurateContentState = initialSurateContentState,
     case 'SURATE_FETCHED':
       return {
         ...state,
-        verses: action.payload.verses,
+        verses: action.payload,
         isLoading: false
       }
     case 'SURATE_FETCHING_ON_ERROR':
