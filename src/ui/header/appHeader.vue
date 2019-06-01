@@ -6,7 +6,6 @@
           Wikislam
         </router-link>
       </div>
-
     </nav>
   </header>
 </template>
@@ -22,9 +21,16 @@ export default class AppHeader extends Vue {}
 <style lang="scss" scoped>
   header {
     height: $header-height;
+    display: flex;
+    align-items: center;
+    background: #01a644;
 
-    .navbar {
-      background: aqua;
+    .navbar{
+      background: transparent;
+
+      > .navbar-brand > a {
+        color: white;
+      }
     }
   }
 </style>

@@ -15,7 +15,10 @@
 
 <style lang="scss" scoped>
   footer {
+    display: flex;
+    align-items: center;
     height: $footer-height;
-    background: aquamarine;
+    background: #1b005e;
+    color: white;
   }
 </style>
