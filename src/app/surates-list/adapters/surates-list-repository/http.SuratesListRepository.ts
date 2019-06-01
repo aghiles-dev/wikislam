@@ -10,7 +10,7 @@ export class HttpSuratesListRepository implements SuratesListRepository{
   constructor(private httpClient: HttpClient) {}
 
   fetchAllSurates(): Observable<SurateState[]> {
-    return this.httpClient.fetch<{chapters: SurateDTO[]}>('surah').pipe(
+    return this.httpClient.fetch<{chapters: SurateDTO[]}>('chapters?language=fr').pipe(
       map(response => this.mapSuratesListDtoToSuratesList(response.chapters))
     )
   }
