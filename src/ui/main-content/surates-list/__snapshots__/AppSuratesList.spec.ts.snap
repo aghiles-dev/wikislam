@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Component | AppSuratesList When surates are being fetched should match App snapshot 1`] = `
+<div
+  actions="[object Object]"
+  state="[object Object]"
+>
+  
+  surates list
+
+</div>
+`;
+
+exports[`Component | AppSuratesList When surates have already been fetched should match App snapshot 1`] = `
+<div
+  actions="[object Object]"
+  state="[object Object]"
+>
+  
+  surates list
+
+</div>
+`;
+
 exports[`Component | AppSuratesList When user is authenticated should match App snapshot 1`] = `
 <div>
   

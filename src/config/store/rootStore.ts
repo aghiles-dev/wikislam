@@ -58,7 +58,7 @@ export class ReduxStore {
     const middlewares = [...additionalMiddlewares, reduxObservableMiddleware]
     return process.env.APP_DEBUG === 'true'
       ? composeWithDevTools(
-          applyMiddleware(...middlewares, reduxImmutableState)
+          applyMiddleware(...middlewares, reduxImmutableState())
         )
       : applyMiddleware(...middlewares)
   }

@@ -12,11 +12,11 @@ export function getAllSurates(state: AppState): SurateState[] {
   return _getAllSurates(state.suratesList)
 }
 
-export function isSuratesListBeingFetched(state: AppState): Boolean {
+export function isSuratesListBeingFetched(state: AppState): boolean {
   return _isSuratesListBeingFetched(state.suratesList)
 }
 
-export function isSuratesListFetchingInError(state: AppState): Boolean {
+export function isSuratesListFetchingInError(state: AppState): boolean {
   return _isSuratesListFetchingInError(state.suratesList)
 }
 

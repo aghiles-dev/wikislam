@@ -2,7 +2,7 @@
   <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <router-link class="navbar-item" :to="{name: 'HOME'}">
+        <router-link class="navbar-item" :to="{name: 'SURATES'}">
           Wikislam
         </router-link>
       </div>

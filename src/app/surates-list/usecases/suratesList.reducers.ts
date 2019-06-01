@@ -44,10 +44,10 @@ export function _getAllSurates(surateList: SuratesListState): SurateState[] {
   return surateList.surates
 }
 
-export function _isSuratesListBeingFetched(surateList: SuratesListState): Boolean {
+export function _isSuratesListBeingFetched(surateList: SuratesListState): boolean {
   return surateList.isLoading
 }
 
-export function _isSuratesListFetchingInError(surateList: SuratesListState): Boolean {
+export function _isSuratesListFetchingInError(surateList: SuratesListState): boolean {
   return surateList.isError
 }
