@@ -1,6 +1,8 @@
 <template>
   <footer>
-    footer
+    <div class="container">
+      footer
+    </div>
   </footer>
 </template>
 
@@ -18,7 +20,8 @@
     display: flex;
     align-items: center;
     height: $footer-height;
-    background: #1b005e;
-    color: white;
+    background: #cccfd1;
+    color: black;
+    border-top: 1px solid #bfc2c4;
   }
 </style>

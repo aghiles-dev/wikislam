@@ -3,8 +3,8 @@
     <app-header/>
 
     <main class="content">
-      <section class="columns">
-        <div class="column is-10-tablet is-offset-1-tablet">
+      <section>
+        <div class="container">
           <router-view/>
         </div>
       </section>
@@ -31,6 +31,8 @@
 <style lang="scss" scoped>
   .content {
     min-height: calc(100vh - #{$header-height} - #{$footer-height});
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin: 0;
   }
 </style>
