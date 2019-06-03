@@ -30,7 +30,7 @@ const cacheHandler: CacheHandler = new InMemoryCacheHandler()
 
 export const appEpicsDependencies: EpicsDependencies = {
   dependencies: {
-    suratesListRepository: new HttpSuratesListRepository(httpClient),
+    suratesListRepository: new HttpSuratesListRepository(httpClient, cacheHandler),
     surateRepository: new HttpSurateRepository(httpClient, envHandler, cacheHandler)
   }
 }
