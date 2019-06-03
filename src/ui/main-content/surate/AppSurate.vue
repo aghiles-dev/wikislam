@@ -21,6 +21,10 @@
     mounted () {
       this.actions.fetchSurateById(this.state.surateId)
     }
+
+    beforeDestroy() {
+      this.actions.resetCurrentSurate()
+    }
   }
 </script>
 

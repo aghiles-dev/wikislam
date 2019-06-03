@@ -27,7 +27,8 @@ describe('Component | AppSurates', () => {
     }
 
     actions = {
-      fetchSurateById: jest.fn()
+      fetchSurateById: jest.fn(),
+      resetCurrentSurate: jest.fn(),
     }
   })
 
@@ -67,6 +68,21 @@ describe('Component | AppSurates', () => {
 
       // Then
       expect(actions.fetchSurateById).toHaveBeenCalledTimes(state.surateId)
+    })
+  })
+
+  describe('When the component is about to be destroyed', () => {
+    it('resets the current surate', () => {
+      // Given
+      const wrapper = shallowMount(AppSuratesList, {
+        propsData: { state, actions }
+      })
+
+      // When
+      wrapper.destroy()
+
+      // Then
+      expect(actions.resetCurrentSurate).toHaveBeenCalledTimes(1)
     })
   })
 

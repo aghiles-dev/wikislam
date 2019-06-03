@@ -19,6 +19,7 @@ export type AppSurateProps = {
 
 export type AppSurateActions = {
   fetchSurateById: (surateId: number) => void
+  resetCurrentSurate: () => void
 }
 
 const mapStateToProps = (state: AppState): { state: AppSurateProps } => ({
@@ -34,7 +35,8 @@ const mapStateToProps = (state: AppState): { state: AppSurateProps } => ({
 const mapDispatchToProps = (dispatch: Dispatch): { actions: AppSurateActions } => ({
   actions: bindActionCreators(
     {
-      fetchSurateById: surateActions.fetchSurateById
+      fetchSurateById: surateActions.fetchSurateById,
+      resetCurrentSurate: surateActions.resetCurrentSurate
     },
     dispatch
   )
