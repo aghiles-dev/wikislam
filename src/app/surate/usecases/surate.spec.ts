@@ -47,8 +47,8 @@ describe('Surates', () => {
         spyOn(surateRepository, 'fetchById').and.returnValue(of([
           {
             id: 1,
-            verse_number: 1,
-            chapter_id: 2,
+            verseNumber: 1,
+            chapterId: 2,
             verseKey: '2:1',
             arabicText: 'fake arabic text',
             frenchText: 'fake french text',
@@ -68,8 +68,8 @@ describe('Surates', () => {
           verses: [
             {
               id: 1,
-              verse_number: 1,
-              chapter_id: 2,
+              verseNumber: 1,
+              chapterId: 2,
               verseKey: '2:1',
               arabicText: 'fake arabic text',
               frenchText: 'fake french text',

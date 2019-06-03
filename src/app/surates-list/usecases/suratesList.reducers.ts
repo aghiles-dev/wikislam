@@ -5,7 +5,7 @@ import {
   SURATES_LIST_FETCHED,
   suratesListActionTypes
 } from './suratesList.actions'
-import { SurateState } from '../../surate/domain/SurateState'
+import { SurateState } from '../domain/SurateState'
 
 const initialSuratesListState: SuratesListState = {
   surates: [],

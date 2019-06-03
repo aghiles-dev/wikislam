@@ -1,4 +1,4 @@
-import { SurateState } from '../../../surate/domain/SurateState'
+import { SurateState } from '../SurateState'
 import { Observable } from 'rxjs'
 
 export interface SuratesListRepository {

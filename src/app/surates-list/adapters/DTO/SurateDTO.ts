@@ -1,4 +1,4 @@
-import { RevelationPlace } from '../../../surate/domain/SurateState'
+import { RevelationPlace } from '../../domain/SurateState'
 
 export interface SurateDTO {
   id: number

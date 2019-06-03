@@ -2,7 +2,7 @@ import { HttpClient } from '../../../shared/domain/ports/HttpClient'
 import { SurateRepository } from '../../domain/ports/SurateRepository'
 import { HttpSurateRepository } from './http.SurateRepository'
 import { EnvHandler } from '../../../shared/domain/ports/EnvHandler'
-import { CacheHandler } from '../../domain/ports/CacheHandler'
+import { CacheHandler } from '../../../shared/domain/ports/CacheHandler'
 import { of } from 'rxjs'
 
 describe('Surate Repository', () => {

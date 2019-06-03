@@ -7,7 +7,8 @@
            v-for="surate in state.surates"
            :key="surate.id">
         <div class="column card is-10-mobile is-8-tablet">
-          <p class="is-size-4 has-text-centered is-spaced has-cursor-pointer">
+          <p class="is-size-4 has-text-centered is-spaced has-cursor-pointer"
+             @click="goToSurate(surate.id)">
             <span>{{surate.surateNumber}}. {{surate.name}} ({{surate.numberOfVerses}})({{surate.arabicName}})</span><br>
             <span class="is-size-5">{{surate.frenchName}}</span>
           </p>
@@ -21,6 +22,7 @@
   import Vue from 'vue'
   import { Component, Prop } from 'vue-property-decorator'
   import { AppSuratesListActions, AppSuratesListProps } from './AppSuratesListConnected'
+  import { AppRouteName } from '../../../config/router/router'
 
   @Component({})
   export default class AppSuratesList extends Vue {
@@ -29,6 +31,10 @@
 
     mounted () {
       this.actions.fetchSuratesList()
+    }
+
+    goToSurate (surateId) {
+      this.$router.push({ name: AppRouteName.SURATE_DETAILS, params: { surateId } })
     }
   }
 </script>

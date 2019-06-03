@@ -1,5 +1,5 @@
 import { AppState } from './rootState'
-import { SurateState } from '../../app/surate/domain/SurateState'
+import { SurateState } from '../../app/surates-list/domain/SurateState'
 import {
   _getAllSurates,
   _isSuratesListBeingFetched,

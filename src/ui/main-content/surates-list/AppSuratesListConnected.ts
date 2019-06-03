@@ -1,6 +1,6 @@
 import { bindActionCreators, Dispatch } from 'redux'
 import { connect } from 'redux-vue'
-import { SurateState } from '../../../app/surate/domain/SurateState'
+import { SurateState } from '../../../app/surates-list/domain/SurateState'
 import {
   getAllSurates,
   isSuratesListBeingFetched,

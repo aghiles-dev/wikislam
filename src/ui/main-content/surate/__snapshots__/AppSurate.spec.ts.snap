@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component | AppSurates When the surate has already been fetched should match snapshot 1`] = `
+<div>
+  <div>
+    
+    in
+  
+  </div>
+</div>
+`;
+
+exports[`Component | AppSurates When the surate is being fetched should match App snapshot 1`] = `
+<div>
+  <progress
+    class="progress is-small is-primary"
+    max="100"
+  />
+</div>
+`;

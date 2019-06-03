@@ -1,7 +1,7 @@
 import { SuratesListRepository } from '../../domain/ports/SuratesListRepository'
 import { HttpClient } from '../../../shared/domain/ports/HttpClient'
 import { Observable, of } from 'rxjs'
-import { SuratesBuilder, SurateState } from '../../../surate/domain/SurateState'
+import { SuratesBuilder, SurateState } from '../../domain/SurateState'
 import { SurateDTO } from '../DTO/SurateDTO'
 import { map } from 'rxjs/operators'
 
