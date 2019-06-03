@@ -1,6 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import AppSuratesList from './AppSurate.vue'
 import { AppSurateActions, AppSurateProps } from './AppSurateConnected'
+import { WordingConstants } from '../../../app/shared/wordingConstants'
 
 describe('Component | AppSurates', () => {
   let state: AppSurateProps
@@ -23,12 +24,12 @@ describe('Component | AppSurates', () => {
         }
       ],
       isLoading: false,
-      wording: {}
+      wording: WordingConstants
     }
 
     actions = {
       fetchSurateById: jest.fn(),
-      resetCurrentSurate: jest.fn(),
+      resetCurrentSurate: jest.fn()
     }
   })
 

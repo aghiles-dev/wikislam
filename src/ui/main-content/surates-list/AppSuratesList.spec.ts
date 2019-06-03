@@ -1,6 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import AppSuratesList from './AppSuratesList.vue'
 import { AppSuratesListActions, AppSuratesListProps } from './AppSuratesListConnected'
+import { WordingConstants } from '../../../app/shared/wordingConstants'
 
 describe('Component | AppSuratesList', () => {
   let state: AppSuratesListProps
@@ -11,7 +12,7 @@ describe('Component | AppSuratesList', () => {
       surates: [],
       isLoading: false,
       isError: false,
-      wording: {}
+      wording: WordingConstants
     }
 
     actions = {

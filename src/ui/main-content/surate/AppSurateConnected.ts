@@ -27,7 +27,7 @@ const mapStateToProps = (state: AppState): { state: AppSurateProps } => ({
     surateId: +AppRouter.currentRoute.params.surateId,
     surateDetails: getAllSurates(state).find(surate => surate.id === +AppRouter.currentRoute.params.surateId),
     verses: getCurrentSurate(state).verses,
-    isLoading: isSuratesListBeingFetched(state),
+    isLoading: getCurrentSurate(state).isLoading,
     wording: WordingConstants
   }
 })

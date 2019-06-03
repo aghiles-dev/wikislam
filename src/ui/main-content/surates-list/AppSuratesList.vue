@@ -7,7 +7,7 @@
            v-for="surate in state.surates"
            :key="surate.id">
         <div class="column card is-10-mobile is-8-tablet">
-          <p class="is-size-4 has-text-centered is-spaced has-cursor-pointer"
+          <p class="is-size-4 has-text-centered has-cursor-pointer"
              @click="goToSurate(surate.id)">
             <span>{{surate.surateNumber}}. {{surate.name}} ({{surate.numberOfVerses}})({{surate.arabicName}})</span><br>
             <span class="is-size-5">{{surate.frenchName}}</span>

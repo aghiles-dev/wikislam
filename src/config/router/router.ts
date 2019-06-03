@@ -8,7 +8,7 @@ export enum AppRouteName {
 }
 
 const AppRouter = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   routes: [
     {
       path: '/surates',
