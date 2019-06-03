@@ -1,11 +1,7 @@
 import VueRouter from 'vue-router'
 import AppSuratesListConnected from '../../ui/main-content/surates-list/AppSuratesListConnected'
 import AppSurateConnected from '../../ui/main-content/surate/AppSurateConnected'
-
-export enum AppRouteName {
-  SURATES = 'SURATES',
-  SURATE_DETAILS = 'SURATE_DETAILS',
-}
+import { AppRouteName } from './AppRouteNames'
 
 const AppRouter = new VueRouter({
   mode: 'hash',

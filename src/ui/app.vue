@@ -5,7 +5,11 @@
     <main class="content">
       <section>
         <div class="container">
-          <router-view/>
+          <div class="columns is-centered">
+            <div class="column is-10-mobile is-8-tablet">
+              <router-view/>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -18,7 +22,7 @@
   import Vue from 'vue'
   import { Component } from 'vue-property-decorator'
   import AppHeader from './header/appHeader.vue'
-  import AppFooter from './footer/appFooter.vue';
+  import AppFooter from './footer/appFooter.vue'
 
   @Component({
     components: { AppFooter, AppHeader }

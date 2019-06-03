@@ -1,6 +1,6 @@
 import { bindActionCreators, Dispatch } from 'redux'
 import { connect } from 'redux-vue'
-import { getAllSurates, getCurrentSurate, isSuratesListBeingFetched } from '../../../config/store/rootSelectors'
+import { getAllSurates, getCurrentSurate } from '../../../config/store/rootSelectors'
 import { Wording, WordingConstants } from '../../../app/shared/wordingConstants'
 import { AppState } from '../../../config/store/rootState'
 import AppSurates from './AppSurate.vue'
@@ -8,6 +8,7 @@ import { surateActions } from '../../../app/surate/usecases/surate.actions'
 import { AppRouter } from '../../../config/router/router'
 import { Verse } from '../../../app/surate/domain/Verse'
 import { SurateState } from '../../../app/surates-list/domain/SurateState'
+import { suratesListActions } from '../../../app/surates-list/usecases/suratesList.actions'
 
 export type AppSurateProps = {
   surateId: number
@@ -20,6 +21,7 @@ export type AppSurateProps = {
 export type AppSurateActions = {
   fetchSurateById: (surateId: number) => void
   resetCurrentSurate: () => void
+  fetchAllSurates: () => void
 }
 
 const mapStateToProps = (state: AppState): { state: AppSurateProps } => ({
@@ -36,7 +38,8 @@ const mapDispatchToProps = (dispatch: Dispatch): { actions: AppSurateActions } =
   actions: bindActionCreators(
     {
       fetchSurateById: surateActions.fetchSurateById,
-      resetCurrentSurate: surateActions.resetCurrentSurate
+      resetCurrentSurate: surateActions.resetCurrentSurate,
+      fetchAllSurates: suratesListActions.fetchSuratesList
     },
     dispatch
   )

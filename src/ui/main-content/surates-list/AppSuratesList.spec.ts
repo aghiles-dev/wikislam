@@ -1,13 +1,19 @@
-import { shallowMount } from '@vue/test-utils'
+import { createLocalVue, shallowMount } from '@vue/test-utils'
 import AppSuratesList from './AppSuratesList.vue'
 import { AppSuratesListActions, AppSuratesListProps } from './AppSuratesListConnected'
 import { WordingConstants } from '../../../app/shared/wordingConstants'
 
 describe('Component | AppSuratesList', () => {
+  let $router
+  let localVue
   let state: AppSuratesListProps
   let actions: AppSuratesListActions
 
   beforeEach(() => {
+    localVue = createLocalVue()
+    $router = {
+      push: jest.fn()
+    }
     state = {
       surates: [],
       isLoading: false,
@@ -24,6 +30,8 @@ describe('Component | AppSuratesList', () => {
     it('should match App snapshot', () => {
       // Given
       const wrapper = shallowMount(AppSuratesList, {
+        localVue,
+        mocks: { $router },
         propsData: {
           state: { ...state, isLoading: true },
           actions
@@ -39,6 +47,8 @@ describe('Component | AppSuratesList', () => {
     it('should match App snapshot', () => {
       // Given
       const wrapper = shallowMount(AppSuratesList, {
+        localVue,
+        mocks: { $router },
         propsData: {
           state: {
             ...state,
@@ -69,6 +79,8 @@ describe('Component | AppSuratesList', () => {
     it('fetches all the surates', () => {
       // When
       shallowMount(AppSuratesList, {
+        localVue,
+        mocks: { $router },
         propsData: { state, actions }
       })
 

@@ -3,7 +3,7 @@
 exports[`Component | AppSuratesList When surates are being fetched should match App snapshot 1`] = `
 <div>
   <progress
-    class="progress is-small is-primary"
+    class="progress is-small"
     max="100"
   />
 </div>
@@ -13,13 +13,13 @@ exports[`Component | AppSuratesList When surates have already been fetched shoul
 <div>
   <div>
     <div
-      class="columns is-centered"
+      class="card"
     >
       <div
-        class="column card is-10-mobile is-8-tablet"
+        class="card-content"
       >
         <p
-          class="is-size-4 has-text-centered is-spaced has-cursor-pointer"
+          class="is-size-4 has-text-centered has-cursor-pointer"
         >
           <span>
             1. Al-Fatihah (7)(الفاتحة)

@@ -29,7 +29,8 @@ describe('Component | AppSurates', () => {
 
     actions = {
       fetchSurateById: jest.fn(),
-      resetCurrentSurate: jest.fn()
+      resetCurrentSurate: jest.fn(),
+      fetchAllSurates: jest.fn()
     }
   })
 
@@ -68,7 +69,8 @@ describe('Component | AppSurates', () => {
       })
 
       // Then
-      expect(actions.fetchSurateById).toHaveBeenCalledTimes(state.surateId)
+      expect(actions.fetchSurateById).toHaveBeenCalledWith(state.surateId)
+      expect(actions.fetchAllSurates).toHaveBeenCalledTimes(1)
     })
   })
 

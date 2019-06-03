@@ -3,9 +3,49 @@
 exports[`Component | AppSurates When the surate has already been fetched should match snapshot 1`] = `
 <div>
   <div>
-    
-    in
-  
+    <div
+      class="checkboxes"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          type="checkbox"
+        />
+        
+        Montrer le texte français
+      
+      </label>
+       
+      <label
+        class="checkbox"
+      >
+        <input
+          type="checkbox"
+        />
+        
+        Montrer le texte arabe
+      
+      </label>
+    </div>
+     
+    <div
+      class="card"
+    >
+      <div
+        class="card-content"
+      >
+        <p
+          class="is-size-6"
+        >
+          <span>
+            1. fake french text
+          </span>
+        </p>
+         
+        <!---->
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -13,7 +53,7 @@ exports[`Component | AppSurates When the surate has already been fetched should 
 exports[`Component | AppSurates When the surate is being fetched should match App snapshot 1`] = `
 <div>
   <progress
-    class="progress is-small is-primary"
+    class="progress is-small"
     max="100"
   />
 </div>
