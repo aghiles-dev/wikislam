@@ -3,19 +3,15 @@
     <progress v-if="state.isLoading" class="progress is-small is-primary" max="100"/>
 
     <div v-else>
-      <div v-for="surate in state.surates"
-           :key="surate.id"
-           class="card">
-        <span>{{surate.id}}</span><br>
-        <span>{{surate.beginsWithBismillah}}</span><br>
-        <span>{{surate.surateNumber}}</span><br>
-        <span>{{surate.arabicName}}</span><br>
-        <span>{{surate.frenchName}}</span><br>
-        <span>{{surate.name}}</span><br>
-        <span>{{surate.numberOfVerses}}</span><br>
-        <span>{{surate.revelationOrder}}</span><br>
-        <span>{{surate.revelationPlace}}</span><br>
-
+      <div class="columns is-centered"
+           v-for="surate in state.surates"
+           :key="surate.id">
+        <div class="column card is-10-mobile is-8-tablet">
+          <p class="is-size-4 has-text-centered is-spaced has-cursor-pointer">
+            <span>{{surate.surateNumber}}. {{surate.name}} ({{surate.numberOfVerses}})({{surate.arabicName}})</span><br>
+            <span class="is-size-5">{{surate.frenchName}}</span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
