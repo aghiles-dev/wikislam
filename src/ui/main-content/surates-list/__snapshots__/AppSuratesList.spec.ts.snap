@@ -1,31 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component | AppSuratesList When surates are being fetched should match App snapshot 1`] = `
-<div
-  actions="[object Object]"
-  state="[object Object]"
->
-  
-  surates list
-
+<div>
+  <progress
+    class="progress is-small is-primary"
+    max="100"
+  />
 </div>
 `;
 
 exports[`Component | AppSuratesList When surates have already been fetched should match App snapshot 1`] = `
-<div
-  actions="[object Object]"
-  state="[object Object]"
->
-  
-  surates list
-
-</div>
-`;
-
-exports[`Component | AppSuratesList When user is authenticated should match App snapshot 1`] = `
 <div>
-  
-  surates list
-
+  <div>
+    <div
+      class="columns is-centered"
+    >
+      <div
+        class="column card is-10-mobile is-8-tablet"
+      >
+        <p
+          class="is-size-4 has-text-centered is-spaced has-cursor-pointer"
+        >
+          <span>
+            1. Al-Fatihah (7)(الفاتحة)
+          </span>
+          <br />
+           
+          <span
+            class="is-size-5"
+          >
+            L'ouverture
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 `;
