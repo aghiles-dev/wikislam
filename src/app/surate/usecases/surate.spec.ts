@@ -96,4 +96,35 @@ describe('Surates', () => {
       })
     })
   })
+
+  describe('reset current surate  ', () => {
+    it('empties the current surate', async () => {
+      // Given
+      const surateId = 1
+      spyOn(surateRepository, 'fetchById').and.returnValue(of([
+        {
+          id: 1,
+          verseNumber: 1,
+          chapterId: 2,
+          verseKey: '2:1',
+          arabicText: 'fake arabic text',
+          frenchText: 'fake french text',
+          juzNumber: 1,
+          hizbNumber: 1,
+          sajdah: false
+        }
+      ]))
+
+      await store.dispatch(surateActions.fetchSurateById(surateId))
+
+      // When
+      await store.dispatch(surateActions.resetCurrentSurate())
+
+      // Then
+      expect(getCurrentSurate(store.getState())).toEqual({
+        verses: [],
+        isLoading: false
+      })
+    })
+  })
 })
