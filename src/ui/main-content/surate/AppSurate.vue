@@ -3,26 +3,25 @@
     <progress v-if="state.isLoading" class="progress is-small" max="100"/>
 
     <div v-else>
-      <div class="checkboxes">
-        <label class="checkbox">
-          <input type="checkbox" v-model="isFrenchTextVisible">
-          {{state.wording.MONTRER_TEXT_FRANCAIS}}
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" v-model="isArabicTextVisible">
-          {{state.wording.MONTRER_TEXT_ARABE}}
-        </label>
+      <div class="language-choice">
+        <div class="select">
+          <select id="language-choice-select" v-model="languageChoice">
+            <option :value="state.wording.FRANCAIS">{{state.wording.FRANCAIS}}</option>
+            <option :value="state.wording.ARABE">{{state.wording.ARABE}}</option>
+            <option :value="state.wording.ARABE_FRANCAIS">{{state.wording.ARABE_FRANCAIS}}</option>
+          </select>
+        </div>
       </div>
 
       <div class="card"
            v-for="verse in state.verses"
            :key="verse.id">
         <div class="card-content">
-          <p class="is-size-6" v-if="isFrenchTextVisible">
+          <p class="is-size-6" v-if="isFrenchVisible">
             <span>{{verse.verseNumber}}. {{verse.frenchText}}</span>
           </p>
 
-          <p class="is-size-4 has-text-right arabic-text has-text-dark" v-if="isArabicTextVisible">
+          <p class="is-size-4 has-text-right arabic-text has-text-dark" v-if="isArabicVisible">
             <span class="is-size-5 verse-number">{{verse.verseNumber}}.</span> <span>{{verse.arabicText}}</span>
           </p>
         </div>
@@ -42,8 +41,15 @@
     @Prop() state: AppSurateProps
     @Prop() actions: AppSurateActions
 
-    isArabicTextVisible: boolean = false
-    isFrenchTextVisible: boolean = true
+    languageChoice: string = this.state.wording.FRANCAIS
+
+    get isFrenchVisible(): boolean {
+      return [this.state.wording.FRANCAIS, this.state.wording.ARABE_FRANCAIS].includes(this.languageChoice)
+    }
+
+    get isArabicVisible(): boolean {
+      return [this.state.wording.ARABE, this.state.wording.ARABE_FRANCAIS].includes(this.languageChoice)
+    }
 
     mounted () {
       this.actions.fetchSurateById(this.state.surateId)
@@ -57,9 +63,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .checkboxes {
-    display: flex;
-    justify-content: space-around;
+  .language-choice {
     margin-bottom: 30px;
   }
 

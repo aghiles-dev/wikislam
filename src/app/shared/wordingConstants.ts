@@ -1,9 +1,11 @@
 export interface Wording {
-  MONTRER_TEXT_ARABE: string
-  MONTRER_TEXT_FRANCAIS: string
+  ARABE: string
+  FRANCAIS: string
+  ARABE_FRANCAIS: string
 }
 
 export const WordingConstants: Wording = {
-  MONTRER_TEXT_ARABE: 'Montrer le texte arabe',
-  MONTRER_TEXT_FRANCAIS: 'Montrer le texte français',
+  ARABE_FRANCAIS: 'Arabe et français',
+  ARABE: 'Arabe',
+  FRANCAIS: 'Français'
 }
